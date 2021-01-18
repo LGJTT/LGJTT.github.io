@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.78.2" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>二叉树 &middot; 终是庄周梦了蝶</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="http://LGJTT.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://LGJTT.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://LGJTT.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://LGJTT.github.io/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+
+<script src="http://LGJTT.github.io/js/highlight.js"></script>
+<link rel="stylesheet" href="http://LGJTT.github.io/css/monokai.css">
+<script>hljs.initHighlightingOnLoad();</script>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://LGJTT.github.io/"><h1>终是庄周梦了蝶</h1></a>
+      <p class="lead">
+       心之所向，素履以往；生如逆旅，一苇以航 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="http://LGJTT.github.io/">Home</a> </li>
+        <li><a href="/about/"> About me </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2021. All rights reserved. </p>
+  </div>
+
+ 
+
+</aside>
+
+    <main class="content container">
+    二叉树
+
+Mon, Jan 18, 2021 <h2 id="1二叉树的遍历">1.二叉树的遍历：</h2>
+<h4 id="11-前序遍历访问顺序root---root-left---root-right">1.1 前序遍历(访问顺序：root  , root-&gt;left  , root-&gt;right)</h4>
+<p>题目(力扣144)：给你二叉树的根节点 root ，返回它节点值的 <strong>前序</strong> 遍历。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">void</span> preorder(TreeNode<span style="color:#f92672">*</span> root,vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums){
+        <span style="color:#75715e">//模板...
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">!=</span><span style="color:#66d9ef">nullptr</span>){
+        nums.push_back(root<span style="color:#f92672">-&gt;</span>val);
+        preorder(root<span style="color:#f92672">-&gt;</span>left,nums);
+        preorder(root<span style="color:#f92672">-&gt;</span>right,nums);
+        }
+    }
+    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> preorderTraversal(TreeNode<span style="color:#f92672">*</span> root) {
+       <span style="color:#66d9ef">auto</span> nums<span style="color:#f92672">=</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>();
+       preorder(root,nums);
+       <span style="color:#66d9ef">return</span> nums;
+    }
+};
+</code></pre></div><h4 id="12-中序遍历访问顺序root-left---root--root-right">1.2 中序遍历（访问顺序：root-&gt;left  , root , root-&gt;right)</h4>
+<p>只需将前序遍历中的模板改为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">if</span>(root<span style="color:#f92672">!=</span><span style="color:#66d9ef">nullptr</span>){
+    inorder(root<span style="color:#f92672">-&gt;</span>left,nums);
+    nums.push_back(root<span style="color:#f92672">-&gt;</span>val);
+    inorder(root<span style="color:#f92672">-&gt;</span>right,nums);
+}
+</code></pre></div><h4 id="13-后序遍历-访问顺序root-left--root-right--root">1.3 后序遍历 （访问顺序：root-&gt;left , root-&gt;right , root)</h4>
+<p>同样的只需要将前序遍历中的模板改为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">if</span>(root<span style="color:#f92672">!=</span><span style="color:#66d9ef">nullptr</span>){
+    postorder(root<span style="color:#f92672">-&gt;</span>left,nums);
+    postorder(root<span style="color:#f92672">-&gt;</span>right,nums);
+    nums.push_back(root<span style="color:#f92672">-&gt;</span>val);
+}
+</code></pre></div><h2 id="2二叉树的层次遍历">2.二叉树的层次遍历</h2>
+<p>题目（力扣107): 给定一个二叉树，返回其节点值<strong>自底向上</strong>的层序遍历(即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历)。</p>
+<p>解析：树的层次遍历可以使用广度优先搜索实现。从根节点开始搜索，每次遍历同一层的全部节点，使用一个列表存储该层的节点值。</p>
+<pre><code>class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; levelOrderBottom(TreeNode* root) {
+        auto levelOrder = vector&lt;vector&lt;int&gt;&gt;();
+        if (!root) {
+            return levelOrder;
+        }
+        queue&lt;TreeNode*&gt; q;
+        q.push(root);
+        while(!q.empty()){
+            auto level=vector&lt;int&gt;();
+            int size=q.size();
+            for(int i=0;i&lt;size;i++){
+                auto node=q.front();
+                q.pop();
+                level.push_back(node-&gt;val);
+                if(node-&gt;left){
+                    q.push(node-&gt;left);
+                }
+                if(node-&gt;right){
+                    q.push(node-&gt;right);
+                }
+            }
+            levelOrder.push_back(level);
+        }
+        reverse(levelOrder.begin(),levelOrder.end());//反转，自底向上
+        return levelOrder;
+    }
+};
+</code></pre><h2 id="3从前序和中序遍历序列构造二叉树">3.从前序和中序遍历序列构造二叉树</h2>
+<p>题目(力扣105): 根据一棵树的前序遍历与中序遍历构造二叉树。（假设树中没有重复元素）</p>
+<p>解析：</p>
+<p>对于任意一颗树而言，<strong>前序遍历</strong>的形式总是</p>
+<p>[ 根节点, [左子树的前序遍历结果], [右子树的前序遍历结果] ]；</p>
+<p>而<strong>中序遍历</strong>的形式总是</p>
+<p>[ [左子树的中序遍历结果], 根节点, [右子树的中序遍历结果] ]。</p>
+<p>因此，我们在中序遍历中定位到根节点，那么我们就可以分别知道左子树和右子树中的节点数目。由于同一颗子树的前序遍历和中序遍历的长度显然是相同的，因此我们就可以对应到前序遍历的结果中，对上述形式中的所有左右括号进行定位。</p>
+<p>特别注意：使用哈希映射（HashMap）来帮助我们快速地定位根节点。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+  unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> index;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    TreeNode<span style="color:#f92672">*</span> myBuildTree(<span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> preorder, <span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> inorder, <span style="color:#66d9ef">int</span> preorder_left, <span style="color:#66d9ef">int</span> preorder_right, <span style="color:#66d9ef">int</span> inorder_left, <span style="color:#66d9ef">int</span> inorder_right){
+        <span style="color:#66d9ef">if</span>(preorder_left<span style="color:#f92672">&gt;</span>preorder_right)
+          <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
+        <span style="color:#66d9ef">int</span> preleft<span style="color:#f92672">=</span>preorder_left;
+        <span style="color:#66d9ef">int</span> pindex<span style="color:#f92672">=</span>index[preorder[preleft]];
+        <span style="color:#66d9ef">int</span> x<span style="color:#f92672">=</span>preleft<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#f92672">+</span>pindex<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>inorder_left;
+        TreeNode<span style="color:#f92672">*</span> root<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> TreeNode(preorder[preleft]);
+        root<span style="color:#f92672">-&gt;</span>left<span style="color:#f92672">=</span>myBuildTree(preorder,inorder,preleft<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,x,inorder_left,pindex<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+        root<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">=</span>myBuildTree(preorder,inorder,x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,preorder_right,pindex<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,inorder_right);
+          <span style="color:#66d9ef">return</span> root;
+
+    }
+    TreeNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">buildTree</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> preorder, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> inorder) {
+        <span style="color:#66d9ef">int</span> n<span style="color:#f92672">=</span>preorder.size();
+        <span style="color:#75715e">//构造哈希映射
+</span><span style="color:#75715e"></span>         <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i) {
+            index[inorder[i]] <span style="color:#f92672">=</span> i;
+        }
+        <span style="color:#66d9ef">return</span> myBuildTree(preorder,inorder,<span style="color:#ae81ff">0</span>,n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+    }
+};
+</code></pre></div><h2 id="4对称的二叉树">4.对称的二叉树</h2>
+<p>题目(箭指offer28): 请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。</p>
+<p>解析：</p>
+<p><strong>对称二叉树定义：</strong> 对于树中 任意两个对称节点 LL和 R，一定有：
+L.val = R.val：即此两对称节点值相等。
+L.left.val = R.right.val ：即 L的 左子节点 和 R 的 右子节点 对称；
+L.right.val = R.left.val：即 L的 右子节点 和 R 的 左子节点 对称。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">bool</span> isSymmetric2(TreeNode<span style="color:#f92672">*</span> root1,TreeNode<span style="color:#f92672">*</span> root2){
+        <span style="color:#66d9ef">if</span>(root1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> root2 <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) <span style="color:#66d9ef">return</span> true;
+        <span style="color:#66d9ef">if</span>(root1 <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> root2<span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span>root1<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">!=</span>root2<span style="color:#f92672">-&gt;</span>val) <span style="color:#66d9ef">return</span> false;
+       <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">isSymmetric2</span>(root1<span style="color:#f92672">-&gt;</span>left,root2<span style="color:#f92672">-&gt;</span>right)<span style="color:#f92672">&amp;&amp;</span>isSymmetric2(root1<span style="color:#f92672">-&gt;</span>right,root2<span style="color:#f92672">-&gt;</span>left);
+    }
+    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isSymmetric</span>(TreeNode<span style="color:#f92672">*</span> root) {
+        <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">==</span>NULL)
+        <span style="color:#66d9ef">return</span> true;
+        <span style="color:#66d9ef">return</span> isSymmetric2(root<span style="color:#f92672">-&gt;</span>left,root<span style="color:#f92672">-&gt;</span>right);
+    }
+};
+</code></pre></div><h2 id="5二叉树中所有距离为k的结点">5.二叉树中所有距离为K的结点</h2>
+<p>题目(力扣863)：给定一个二叉树（具有根结点 root）， 一个目标结点 target ，和一个整数值 K 。</p>
+<p>返回到目标结点 target 距离为 K 的所有结点的值的列表。 答案可以以任何顺序返回。</p>
+<p>解析：首先使用 <strong>DFS</strong> 遍历二叉树，为每个节点保存其父结点；使用 <strong>BFS</strong> 向三个方向搜索（<strong>左孩子、右孩子、父结点</strong>），当搜索第 K 次时，队列中的全部结点即为所求；</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    unordered_map<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">*</span>, TreeNode<span style="color:#f92672">*&gt;</span> parent;
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> distanceK(TreeNode<span style="color:#f92672">*</span> root, TreeNode<span style="color:#f92672">*</span> target, <span style="color:#66d9ef">int</span> K) {
+        findParent(root,NULL,parent);
+        queue<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">*&gt;</span> q;
+        q.push(target);
+        unordered_set<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">*&gt;</span> visited;
+        visited.insert(target);<span style="color:#75715e">//标记已经找过的
+</span><span style="color:#75715e"></span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec{};
+        <span style="color:#66d9ef">int</span> distance<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>q.empty()){
+            <span style="color:#66d9ef">int</span> size<span style="color:#f92672">=</span>q.size();
+            <span style="color:#66d9ef">while</span>(size<span style="color:#f92672">--</span>){
+                TreeNode<span style="color:#f92672">*</span> node<span style="color:#f92672">=</span>q.front();
+                q.pop();
+             <span style="color:#66d9ef">if</span>(distance<span style="color:#f92672">==</span>K)
+                   vec.push_back(node<span style="color:#f92672">-&gt;</span>val);
+             <span style="color:#66d9ef">if</span>(node<span style="color:#f92672">-&gt;</span>left<span style="color:#f92672">&amp;&amp;</span>visited.find(node<span style="color:#f92672">-&gt;</span>left)<span style="color:#f92672">==</span>visited.end()){
+                    q.push(node<span style="color:#f92672">-&gt;</span>left);
+                    visited.insert(node<span style="color:#f92672">-&gt;</span>left);
+                }
+           <span style="color:#66d9ef">if</span>(node<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">&amp;&amp;</span>visited.find(node<span style="color:#f92672">-&gt;</span>right)<span style="color:#f92672">==</span>visited.end()){
+                    q.push(node<span style="color:#f92672">-&gt;</span>right);
+                    visited.insert(node<span style="color:#f92672">-&gt;</span>right);
+                }
+                TreeNode<span style="color:#f92672">*</span> par<span style="color:#f92672">=</span>parent[node];
+                <span style="color:#66d9ef">if</span>(par<span style="color:#f92672">!=</span>NULL<span style="color:#f92672">&amp;&amp;</span>visited.find(par)<span style="color:#f92672">==</span>visited.end()){
+                    q.push(par);
+                    visited.insert(par);
+                }
+                  
+            }
+            <span style="color:#f92672">++</span>distance;
+            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>vec.empty())
+               <span style="color:#66d9ef">break</span>;
+
+        }
+        <span style="color:#66d9ef">return</span> vec;
+        
+    }
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">findParent</span>(TreeNode<span style="color:#f92672">*</span> node,TreeNode<span style="color:#f92672">*</span> par,  unordered_map<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">*</span>, TreeNode<span style="color:#f92672">*&gt;&amp;</span> parent){
+        <span style="color:#66d9ef">if</span>(node<span style="color:#f92672">!=</span>NULL){
+            parent[node]<span style="color:#f92672">=</span>par;
+            findParent(node<span style="color:#f92672">-&gt;</span>left,node,parent);
+            findParent(node<span style="color:#f92672">-&gt;</span>right,node,parent);
+        }
+    }
+};
+</code></pre></div>
+
+
+<span id="/post/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="leancloud_visitors" data-flag-title="二叉树">
+  <span class="post-meta-item-text">文章阅读量 </span>
+  <span class="leancloud-visitors-count">0</span>
+  <p></p >
+   </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: 'VPLfKNXCNHqXG8xoeVbxE1Yq-gzGzoHsz',
+        appKey: 'cuRGWdTiQRxvayFVJvgHyp88',
+        notify:  false ,
+        verify:  true ,
+        avatar:'robohash',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>
