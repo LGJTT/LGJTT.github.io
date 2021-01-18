@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>总是庄周梦了蝶</title>
+    <title>终是庄周梦了蝶</title>
     <link>http://LGJTT.github.io/</link>
-    <description>Recent content on 总是庄周梦了蝶</description>
+    <description>Recent content on 终是庄周梦了蝶</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Jan 2021 00:04:48 +0800</lastBuildDate><atom:link href="http://LGJTT.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Third</title>
+      <title>萌新开工</title>
       <link>http://LGJTT.github.io/post/third/</link>
       <pubDate>Mon, 18 Jan 2021 00:04:48 +0800</pubDate>
       
       <guid>http://LGJTT.github.io/post/third/</guid>
-      <description></description>
+      <description>#include&amp;lt;iostream&amp;gt;using namespace std; int main(){ cout&amp;lt;&amp;lt;&amp;#34;hello world!&amp;#34;&amp;lt;&amp;lt;endl; } </description>
     </item>
     
     <item>
@@ -35,12 +35,13 @@
     </item>
     
     <item>
-      <title>About</title>
+      <title>About me</title>
       <link>http://LGJTT.github.io/about/</link>
       <pubDate>Sun, 17 Jan 2021 23:26:29 +0800</pubDate>
       
       <guid>http://LGJTT.github.io/about/</guid>
-      <description></description>
+      <description>​ Name: 李国杰（GuoJie Li)
+Personalized Signature: 我不和谁争，谁和我争，我也不屑。我热爱自然，其次是艺术。我用生命之火，烤着双手。火萎了，我也该走了。</description>
     </item>
     
   </channel>
