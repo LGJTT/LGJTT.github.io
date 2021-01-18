@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>总是庄周梦了蝶</title>
+    <link>http://LGJTT.github.io/</link>
+    <description>Recent content on 总是庄周梦了蝶</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Jan 2021 00:04:48 +0800</lastBuildDate><atom:link href="http://LGJTT.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Third</title>
+      <link>http://LGJTT.github.io/post/third/</link>
+      <pubDate>Mon, 18 Jan 2021 00:04:48 +0800</pubDate>
+      
+      <guid>http://LGJTT.github.io/post/third/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sencond</title>
+      <link>http://LGJTT.github.io/post/sencond/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:34 +0800</pubDate>
+      
+      <guid>http://LGJTT.github.io/post/sencond/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>First</title>
+      <link>http://LGJTT.github.io/post/first/</link>
+      <pubDate>Sun, 17 Jan 2021 23:27:46 +0800</pubDate>
+      
+      <guid>http://LGJTT.github.io/post/first/</guid>
+      <description>My first blog  aaa bbb ccc  </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://LGJTT.github.io/about/</link>
+      <pubDate>Sun, 17 Jan 2021 23:26:29 +0800</pubDate>
+      
+      <guid>http://LGJTT.github.io/about/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
